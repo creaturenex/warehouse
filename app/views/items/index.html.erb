@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Items</h1>
+
+<div id="items">
+  <% @items.each do |item| %>
+    <%= render item %>
+    <p>
+      <%= link_to "Show this item", item %>
+    </p>
+    <p>
+      <%= link_to "Show Inventory", [@inventory] %>
+    </p>
+    <p>
+      <%= link_to 'Edit Item', edit_inventory_item_path(@inventory, item) %>
+    </p>
+    <p>
+      <%= link_to 'Destroy Item', [@inventory, item], method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New item", new_inmventory_item_path(@inventory) %>

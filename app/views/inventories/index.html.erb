@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Inventories</h1>
+
+<div id="inventory">
+
+    <%=@inventory %>
+    <p>
+      <%= link_to "Show this inventory", @inventory %>
+    </p>
+
+</div>
+
+<%= link_to "New inventory", new_location_inventory_path%>
