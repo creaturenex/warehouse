@@ -1,17 +1,17 @@
 require "application_system_test_case"
 
-class InventoriesTest < ApplicationSystemTestCase
+class InventoryTest < ApplicationSystemTestCase
   setup do
-    @inventory = inventories(:one)
+    @inventory = inventory(:one)
   end
 
   test "visiting the index" do
-    visit inventories_url
-    assert_selector "h1", text: "Inventories"
+    visit inventory_url
+    assert_selector "h1", text: "Inventory"
   end
 
   test "should create inventory" do
-    visit inventories_url
+    visit inventory_url
     click_on "New inventory"
 
     fill_in "Location", with: @inventory.location_id

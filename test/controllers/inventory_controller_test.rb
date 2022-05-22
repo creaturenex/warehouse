@@ -1,12 +1,12 @@
 require "test_helper"
 
-class InventoriesControllerTest < ActionDispatch::IntegrationTest
+class InventoryControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @inventory = inventories(:one)
+    @inventory = inventory(:one)
   end
 
   test "should get index" do
-    get inventories_url
+    get inventory_url
     assert_response :success
   end
 
@@ -17,7 +17,7 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create inventory" do
     assert_difference("Inventory.count") do
-      post inventories_url, params: { inventory: { location_id: @inventory.location_id } }
+      post inventory_url, params: { inventory: { location_id: @inventory.location_id } }
     end
 
     assert_redirected_to inventory_url(Inventory.last)
@@ -43,6 +43,6 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
       delete inventory_url(@inventory)
     end
 
-    assert_redirected_to inventories_url
+    assert_redirected_to inventory_url
   end
 end
