@@ -1,33 +1,33 @@
-class InventoriesController < ApplicationController
+class InventoryController < ApplicationController
   before_action :get_location
   before_action :set_inventory, only: %i[ show edit update destroy ]
 
-  # GET /inventories or /inventories.json
+  # GET /inventory or /inventory.json
   def index
     @inventory = @location.inventory
   end
 
-  # GET /inventories/1 or /inventories/1.json
+  # GET /inventory/1 or /inventory/1.json
   def show
   end
 
-  # GET /inventories/new
+  # GET /inventory/new
   def new
     @location
     @inventory = @location.build_inventory
   end
 
-  # GET /inventories/1/edit
+  # GET /inventory/1/edit
   def edit
   end
 
-  # POST /inventories or /inventories.json
+  # POST /inventory or /inventory.json
   def create
     @inventory = @location.build_inventory(inventory_params)
 
     respond_to do |format|
       if @inventory.save
-        format.html { redirect_to location_inventory_path(@location), notice: "Inventory was successfully created." }
+        format.html { redirect_to location_path(@location), notice: "Inventory was successfully created." }
         format.json { render :show, status: :created, location: @inventory }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,7 +36,7 @@ class InventoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /inventories/1 or /inventories/1.json
+  # PATCH/PUT /inventory/1 or /inventory/1.json
   def update
     respond_to do |format|
       if @inventory.update(inventory_params)
@@ -49,7 +49,7 @@ class InventoriesController < ApplicationController
     end
   end
 
-  # DELETE /inventories/1 or /inventories/1.json
+  # DELETE /inventory/1 or /inventory/1.json
   def destroy
     @inventory.destroy
 
@@ -70,7 +70,7 @@ class InventoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def inventory_params
-      params.require(:inventory).permit(:location_id)
+      params.require(:inventory).permit(:name, :location_id)
     end
 end
 

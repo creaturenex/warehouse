@@ -2,12 +2,19 @@
 
 <%= render @location %>
 
-<% @location.inventory %>
+<% if @location.inventory %>
+
+<h3>Inventory at Location</h3>
+<%= render "inventory/show", inventory: @location.inventory %>
+
+<% end %>
+
+<hr>
 
 <div>
   <%= link_to "Edit this location", edit_location_path(@location) %> |
-  <%= link_to 'Add Inventory', location_inventories_path(@location) %> |
+  <%= link_to 'Add Inventory', new_location_inventory_path(@location) %> |
   <%= link_to "Back to locations", locations_path %>
-  <br>
+  <br><br>
   <%= button_to "Destroy this location", @location, method: :delete %>
 </div>
